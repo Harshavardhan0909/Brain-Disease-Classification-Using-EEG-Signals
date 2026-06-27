@@ -1,0 +1,12 @@
+# Ignore dataset
+EEG_Dataset/
+
+# Ignore generated outputs
+outputs/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# VS Code
+.vscode/
