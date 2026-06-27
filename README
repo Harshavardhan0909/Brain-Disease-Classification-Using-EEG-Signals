@@ -1,97 +1,86 @@
 # 🧠 Brain Disease Classification using EEG Signals
 
-<p align="center">
-  <strong>A Brain-Computer Interface (BCI) Project for EEG-Based Detection of Alzheimer's Disease and Frontotemporal Dementia</strong>
-</p>
-
-<p align="center">
-
-![Python](https://img.shields.io/badge/Python-3.10+-blue?logo=python)
-![MNE](https://img.shields.io/badge/MNE-Python-green)
-![Machine Learning](https://img.shields.io/badge/Machine-Learning-orange)
-![Deep Learning](https://img.shields.io/badge/Deep-Learning-red)
-![Status](https://img.shields.io/badge/Status-Active-success)
-
-</p>
+> A Brain-Computer Interface (BCI) project for analyzing resting-state EEG signals to classify **Alzheimer's Disease (AD)**, **Frontotemporal Dementia (FTD)**, and **Cognitively Normal (CN)** subjects using machine learning and deep learning techniques.
 
 ---
 
-## 📖 Project Overview
+## 📌 Project Overview
 
-Neurodegenerative disorders such as **Alzheimer's Disease (AD)** and **Frontotemporal Dementia (FTD)** cause progressive deterioration of brain function and significantly alter neural activity. Electroencephalography (EEG) provides a **non-invasive, cost-effective, and clinically valuable** approach for measuring these changes in brain activity.
+Neurodegenerative disorders such as Alzheimer's Disease (AD) and Frontotemporal Dementia (FTD) alter the electrical activity of the brain. Electroencephalography (EEG) provides a non-invasive method for recording this activity and can be used to develop automated diagnostic systems.
 
-This project focuses on developing an **EEG-based Brain Disease Classification System** capable of distinguishing between:
+This repository implements an EEG analysis pipeline that includes:
 
-* 🧠 Alzheimer's Disease (AD)
-* 🧠 Frontotemporal Dementia (FTD)
-* 🧠 Cognitively Normal (CN)
+* EEG preprocessing
+* Signal visualization
+* Power Spectral Density (PSD) analysis
+* Feature extraction
+* Brain activity visualization
+* PCA and t-SNE dimensionality reduction
+* Preparation of EEG data for machine learning and deep learning models
 
-The project combines **EEG signal processing**, **feature extraction**, **dimensionality reduction**, and **deep learning** techniques to build an accurate and explainable classification pipeline.
-
----
-
-# 🎯 Objectives
-
-* Load and preprocess resting-state EEG recordings
-* Visualize multichannel EEG signals
-* Analyze Power Spectral Density (PSD)
-* Compare brain activity across subjects
-* Extract meaningful EEG features
-* Perform dimensionality reduction using PCA and t-SNE
-* Build machine learning and deep learning models for disease classification
-* Improve model interpretability using Explainable AI techniques
+The long-term objective of this project is to build an accurate and explainable brain disease classification model.
 
 ---
 
 # 📂 Dataset
 
-This project utilizes the publicly available **OpenNeuro Dataset (ds004504)**.
+This project uses the publicly available **OpenNeuro Dataset (ds004504)**.
 
 ## Dataset Summary
 
-| Category                      | Subjects |
-| ----------------------------- | -------: |
-| Alzheimer's Disease (AD)      |   **36** |
-| Frontotemporal Dementia (FTD) |   **23** |
-| Cognitively Normal (CN)       |   **29** |
-| **Total Participants**        |   **88** |
+| Category                      | Number of Subjects |
+| ----------------------------- | -----------------: |
+| Alzheimer's Disease (AD)      |                 36 |
+| Frontotemporal Dementia (FTD) |                 23 |
+| Cognitively Normal (CN)       |                 29 |
+| **Total Subjects**            |             **88** |
 
 ---
 
-# 👥 Participant Information
+## Participant Information
 
-| Parameter       |               AD |              FTD |               CN |
-| --------------- | ---------------: | ---------------: | ---------------: |
-| Subjects        |               36 |               23 |               29 |
-| Mean Age        | 66.4 ± 7.9 years | 63.6 ± 8.2 years | 67.9 ± 5.4 years |
-| Mean MMSE Score |     17.75 ± 4.50 |     22.17 ± 8.22 |               30 |
+The dataset includes resting-state EEG recordings from 88 participants.
 
-**Disease Duration (Median):** 25 Months
+### Alzheimer's Disease (AD)
 
-The cognitive status of each participant was evaluated using the **Mini-Mental State Examination (MMSE)**.
+* Subjects: **36**
+* Mean Age: **66.4 ± 7.9 years**
+* Average MMSE Score: **17.75 ± 4.5**
+
+### Frontotemporal Dementia (FTD)
+
+* Subjects: **23**
+* Mean Age: **63.6 ± 8.2 years**
+* Average MMSE Score: **22.17 ± 8.22**
+
+### Cognitively Normal (CN)
+
+* Subjects: **29**
+* Mean Age: **67.9 ± 5.4 years**
+* Average MMSE Score: **30**
+
+Disease duration for patients had a median of **25 months**.
 
 ---
 
-# 🧠 EEG Acquisition Details
+# 🧠 EEG Recording Details
 
-The EEG recordings were collected at the **2nd Department of Neurology, AHEPA General Hospital, Thessaloniki, Greece** using a **Nihon Kohden EEG-2100 Clinical EEG System**.
+The EEG recordings were collected at the **2nd Department of Neurology, AHEPA General Hospital, Thessaloniki, Greece** using a **Nihon Kohden EEG-2100** clinical system.
 
-## Recording Specifications
+### Recording Specifications
 
-| Parameter             | Value                       |
-| --------------------- | --------------------------- |
-| Recording Type        | Resting-State (Eyes Closed) |
-| EEG Channels          | 19                          |
-| Reference Electrodes  | A1 & A2                     |
-| Electrode Placement   | International 10–20 System  |
-| Sampling Frequency    | **500 Hz**                  |
-| Resolution            | **10 μV/mm**                |
-| High Frequency Filter | **70 Hz**                   |
-| Skin Impedance        | **< 5 kΩ**                  |
+* Resting-state EEG (Eyes Closed)
+* 19 scalp EEG channels
+* 2 reference electrodes (A1, A2)
+* International 10–20 electrode placement system
+* Sampling Frequency: **500 Hz**
+* Recording Resolution: **10 μV/mm**
+* High-frequency filter: **70 Hz**
+* Skin impedance maintained below **5 kΩ**
 
 ### EEG Channels
 
-```text
+```
 Fp1  Fp2
 F7   F3   Fz   F4   F8
 T3   C3   Cz   C4   T4
@@ -99,88 +88,96 @@ T5   P3   Pz   P4   T6
 O1   O2
 ```
 
+Average recording duration:
+
+* AD: ~13.5 minutes
+* FTD: ~12 minutes
+* CN: ~13.8 minutes
+
 ---
 
 # 🧹 Dataset Preprocessing
 
-The original EEG recordings were exported to **EEGLAB (.set)** format.
+The original recordings were exported from the clinical EEG system into EEGLAB `.set` format.
 
-The dataset contains:
+The dataset provides:
 
-* Raw EEG recordings
-* Preprocessed EEG recordings (`derivatives/`)
+* **Raw EEG recordings**
+* **Preprocessed EEG recordings** (inside the `derivatives` folder)
 
 The preprocessing pipeline applied by the dataset authors includes:
 
-1. Butterworth Bandpass Filtering (0.5–45 Hz)
+1. Butterworth Bandpass Filter (0.5–45 Hz)
 2. Re-referencing to A1–A2
 3. Artifact Subspace Reconstruction (ASR)
 4. Independent Component Analysis (ICA)
 5. Automatic artifact removal using ICLabel
 
-These preprocessing steps reduce noise and remove artifacts such as eye movements and muscle activity.
+Artifacts such as eye movements and jaw muscle activity were automatically detected and removed.
 
 ---
 
-# ⚙️ Project Workflow
+# ⚙️ Project Pipeline
 
-```text
-              EEG Dataset (.set)
-                     │
-                     ▼
-          Load EEG using MNE-Python
-                     │
-                     ▼
-          Bandpass Filtering (1–50 Hz)
-                     │
-                     ▼
-      Multichannel EEG Signal Visualization
-                     │
-                     ▼
-       Power Spectral Density (PSD)
-                     │
-                     ▼
-          EEG Feature Extraction
-                     │
-                     ▼
-      Subject-wise Brain Activity Analysis
-                     │
-                     ▼
-      Heatmap Generation Across Subjects
-                     │
-                     ▼
-             PCA Visualization
-                     │
-                     ▼
-            t-SNE Visualization
-                     │
-                     ▼
- Machine Learning / Deep Learning Models
-                     │
-                     ▼
- Brain Disease Classification & Explainability
+```
+Raw EEG (.set)
+        │
+        ▼
+Load EEG using MNE
+        │
+        ▼
+Bandpass Filter (1–50 Hz)
+        │
+        ▼
+Signal Visualization
+        │
+        ▼
+Power Spectral Density (PSD)
+        │
+        ▼
+Feature Extraction
+        │
+        ▼
+Brain Activity Heatmap
+        │
+        ▼
+PCA
+        │
+        ▼
+t-SNE
+        │
+        ▼
+Machine Learning / Deep Learning
 ```
 
 ---
 
-# ✨ Current Features
+# 📊 Current Features
 
-* ✅ EEG Loading using **MNE-Python**
-* ✅ Bandpass Filtering (1–50 Hz)
-* ✅ Visualization of all 19 EEG Channels
-* ✅ Power Spectral Density (PSD) Analysis
-* ✅ Subject-wise Brain Activity Heatmaps
-* ✅ Principal Component Analysis (PCA)
-* ✅ t-SNE Visualization
-* ✅ Automatic Generation of Analysis Plots
+✔ Load EEG recordings using MNE-Python
+
+✔ Bandpass filtering (1–50 Hz)
+
+✔ Visualization of all 19 EEG channels
+
+✔ Power Spectral Density (PSD)
+
+✔ Subject-wise brain activity heatmaps
+
+✔ PCA visualization
+
+✔ t-SNE visualization
+
+✔ Automatic saving of generated figures
 
 ---
 
-# 📁 Repository Structure
+# 📁 Project Structure
 
-```text
+```
 Brain-Disease-Classification-EEG/
 
+│
 ├── src/
 │   ├── final.py
 │   ├── 3a.py
@@ -189,39 +186,41 @@ Brain-Disease-Classification-EEG/
 ├── outputs/
 │
 ├── README.md
+│
 ├── requirements.txt
+│
 └── .gitignore
 ```
 
-> **Note:** The EEG dataset is **not included** in this repository due to its size. Download the dataset separately from OpenNeuro before running the project.
+> The EEG dataset is **not included** in this repository due to its size. Please download it from OpenNeuro before running the project.
 
 ---
 
 # 🚀 Installation
 
-Clone the repository:
+Clone the repository
 
 ```bash
-git clone https://github.com/<your-username>/Brain-Disease-Classification-EEG.git
+git clone https://github.com/yourusername/Brain-Disease-Classification-EEG.git
 ```
 
-Install the required dependencies:
+Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Update the dataset path in the source code before execution.
+Download the OpenNeuro dataset and update the dataset path in the source code.
 
 ---
 
-# ▶️ Running the Project
+# ▶️ Running
 
 ```bash
 python final.py
 ```
 
-All generated visualizations and analysis results will be stored inside the **outputs/** directory.
+Generated visualizations are saved inside the `outputs/` directory.
 
 ---
 
@@ -233,22 +232,19 @@ All generated visualizations and analysis results will be stored inside the **ou
 * Matplotlib
 * Seaborn
 * Scikit-learn
-* Principal Component Analysis (PCA)
-* t-SNE
 
 ---
 
-# 🔬 Future Enhancements
+# 🔬 Future Work
 
-* Continuous Wavelet Transform (CWT)
+* EEG artifact removal
+* Wavelet Transform (CWT)
 * EEG Image Generation
 * Data Augmentation
-* CNN-Based Classification
-* EEGConvNeXt Architecture
-* Transfer Learning
+* CNN / EEGConvNeXt
 * Grad-CAM Explainability
-* Performance Evaluation
-* Real-Time EEG Classification
+* Brain Disease Classification
+* Model Evaluation
 
 ---
 
@@ -256,17 +252,9 @@ All generated visualizations and analysis results will be stored inside the **ou
 
 If you use this dataset in your research, please cite:
 
-> **A Dataset of Scalp EEG Recordings of Alzheimer's Disease, Frontotemporal Dementia and Healthy Subjects from Routine EEG**
->
-> *Data*, **2023**
->
-> DOI: **https://doi.org/10.3390/data8060095**
+**A Dataset of Scalp EEG Recordings of Alzheimer's Disease, Frontotemporal Dementia and Healthy Subjects from Routine EEG.** *Data*, 2023.
 
----
-
-# 🙏 Acknowledgements
-
-This project is built using the publicly available EEG dataset provided by **OpenNeuro**. We also acknowledge the contributions of the **MNE-Python** and **Scikit-learn** communities for their excellent open-source tools used throughout this work.
+DOI: https://doi.org/10.3390/data8060095
 
 ---
 
@@ -274,20 +262,10 @@ This project is built using the publicly available EEG dataset provided by **Ope
 
 **Harshavardhan Korlepara**
 
-**B.Tech – Artificial Intelligence & Machine Learning**
+B.Tech | Artificial Intelligence & Machine Learning
 
-**Areas of Interest**
-
-* Brain-Computer Interface (BCI)
-* EEG Signal Processing
-* Machine Learning
-* Deep Learning
-* Explainable AI
+Brain-Computer Interface (BCI) • EEG Signal Processing • Machine Learning • Deep Learning
 
 ---
 
-<div align="center">
-
-### ⭐ If you found this project helpful, please consider giving it a Star!
-
-</div>
+⭐ **If you find this repository useful, consider giving it a star!**
